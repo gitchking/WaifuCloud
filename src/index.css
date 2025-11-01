@@ -1,0 +1,542 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-ubuntu: 'Ubuntu', sans-serif;
+  --font-lato: 'Lato', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-lato);
+  line-height: 1.6;
+  color: #333333; /* Softer dark gray instead of harsh black */
+  background: #f8f9fa; /* Softer off-white instead of bright white */
+}
+
+/* Dark mode styles */
+.dark body {
+  color: #a9b1d6;
+  background: #1a1b26;
+}
+
+.font-ubuntu {
+  font-family: var(--font-ubuntu);
+}
+
+.font-lato {
+  font-family: var(--font-lato);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e9ecef; /* Softer light gray */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #7aa2f7 0%, #9d7cd8 100%);
+  border-radius: 10px;
+}
+
+/* Dark mode scrollbar */
+.dark ::-webkit-scrollbar-track {
+  background: #16161e;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #7aa2f7 0%, #bb9af7 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #7aa2f7 0%, #bb9af7 100%);
+}
+
+/* Dark mode scrollbar hover */
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #bb9af7 0%, #7aa2f7 100%);
+}
+
+/* Smooth animations */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(248, 249, 250, 0.7); /* Softer off-white with transparency */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(233, 236, 239, 0.5); /* Softer border */
+}
+
+/* Dark mode glass effect */
+.dark .glass {
+  background: rgba(26, 27, 38, 0.25);
+  border: 1px solid rgba(92, 99, 136, 0.1);
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.loading-shimmer {
+  animation: shimmer 1.2s ease-in-out infinite;
+  background: linear-gradient(to right, #e9ecef 8%, #dee2e6 18%, #e9ecef 33%);
+  background-size: 800px 104px;
+}
+
+/* Dark mode shimmer */
+.dark .loading-shimmer {
+  background: linear-gradient(to right, #1a1b26 8%, #292e42 18%, #1a1b26 33%);
+}
+
+/* Custom focus styles */
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #7aa2f7;
+  outline-offset: 2px;
+}
+
+/* Dark mode focus styles */
+.dark button:focus-visible,
+.dark input:focus-visible,
+.dark textarea:focus-visible {
+  outline: 2px solid #7aa2f7;
+  outline-offset: 2px;
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-700 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-xl;
+}
+
+/* Dark mode primary button */
+.dark .btn-primary {
+  @apply bg-gradient-to-r from-tokyo-night-blue to-tokyo-night-purple text-white hover:from-tokyo-night-blue hover:to-tokyo-night-pink;
+}
+
+.btn-secondary {
+  @apply bg-white text-gray-700 px-6 py-3 rounded-xl font-semibold border border-gray-300 hover:bg-gray-50 hover:shadow-md transition-all duration-200;
+}
+
+/* Dark mode secondary button */
+.dark .btn-secondary {
+  @apply bg-tokyo-night-bg-dark text-tokyo-night-text border-tokyo-night-comment hover:bg-tokyo-night-bg-highlight;
+}
+
+/* Gradient text */
+.gradient-text {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600;
+}
+
+/* Dark mode gradient text */
+.dark .gradient-text {
+  @apply bg-gradient-to-r from-tokyo-night-blue to-tokyo-night-purple;
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Gradient animation for text */
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradientX 3s ease infinite;
+}
+
+@keyframes gradientX {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Slower gradient animation for text */
+.animate-gradient-x-slow {
+  background-size: 200% 200%;
+  animation: gradientX 6s ease infinite;
+}
+
+@keyframes gradientX {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Floating animations */
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(10px, 15px) rotate(5deg);
+  }
+  50% {
+    transform: translate(20px, 5px) rotate(0deg);
+  }
+  75% {
+    transform: translate(10px, 15px) rotate(-5deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+/* Delay classes for staggered animations */
+.animation-delay-300 {
+  animation-delay: 0.3s;
+}
+
+.animation-delay-500 {
+  animation-delay: 0.5s;
+}
+
+.animation-delay-700 {
+  animation-delay: 0.7s;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-3000 {
+  animation-delay: 3s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+.animation-delay-6000 {
+  animation-delay: 6s;
+}
+
+/* Pulse animation for background elements */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.15;
+    transform: scale(1.05);
+  }
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Dark mode modal backdrop */
+.dark .modal-backdrop {
+  background-color: rgba(26, 27, 38, 0.8);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Dark mode card hover */
+.dark .card-hover:hover {
+  box-shadow: 0 20px 25px -5px rgba(122, 162, 247, 0.2), 0 10px 10px -5px rgba(122, 162, 247, 0.1);
+}
+
+/* Responsive grid */
+.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Status indicators */
+.status-online {
+  @apply inline-flex items-center px-2 py-1 text-xs font-medium bg-green-100 text-green-800 rounded-full;
+}
+
+/* Dark mode status online */
+.dark .status-online {
+  @apply bg-tokyo-night-green/20 text-tokyo-night-green;
+}
+
+.status-offline {
+  @apply inline-flex items-center px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full;
+}
+
+/* Dark mode status offline */
+.dark .status-offline {
+  @apply bg-tokyo-night-red/20 text-tokyo-night-red;
+}
+
+.status-maintenance {
+  @apply inline-flex items-center px-2 py-1 text-xs font-medium bg-yellow-100 text-yellow-800 rounded-full;
+}
+
+/* Dark mode status maintenance */
+.dark .status-maintenance {
+  @apply bg-tokyo-night-yellow/20 text-tokyo-night-yellow;
+}
+
+/* Loading states */
+.skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+/* Dark mode skeleton */
+.dark .skeleton {
+  @apply bg-tokyo-night-bg-highlight;
+}
+
+/* Typography improvements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-ubuntu);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+p, span, div {
+  font-family: var(--font-lato);
+}
+
+/* Enhanced form styles */
+.form-input {
+  @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 shadow-sm;
+}
+
+/* Dark mode form input */
+.dark .form-input {
+  @apply bg-tokyo-night-bg-dark border-tokyo-night-comment text-tokyo-night-text placeholder-tokyo-night-comment focus:ring-2 focus:ring-tokyo-night-blue focus:border-transparent;
+}
+
+.form-textarea {
+  @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 shadow-sm resize-none;
+}
+
+/* Dark mode form textarea */
+.dark .form-textarea {
+  @apply bg-tokyo-night-bg-dark border-tokyo-night-comment text-tokyo-night-text placeholder-tokyo-night-comment focus:ring-2 focus:ring-tokyo-night-blue focus:border-transparent;
+}
+
+.form-select {
+  @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 shadow-sm;
+}
+
+/* Dark mode form select */
+.dark .form-select {
+  @apply bg-tokyo-night-bg-dark border-tokyo-night-comment text-tokyo-night-text focus:ring-2 focus:ring-tokyo-night-blue focus:border-transparent;
+}
+
+/* Custom badge styles */
+.badge {
+  @apply inline-flex items-center px-3 py-1 text-xs font-medium rounded-full;
+}
+
+.badge-primary {
+  @apply bg-blue-100 text-blue-800;
+}
+
+/* Dark mode badge primary */
+.dark .badge-primary {
+  @apply bg-tokyo-night-blue/20 text-tokyo-night-blue;
+}
+
+.badge-secondary {
+  @apply bg-gray-100 text-gray-800;
+}
+
+/* Dark mode badge secondary */
+.dark .badge-secondary {
+  @apply bg-tokyo-night-bg-highlight text-tokyo-night-text;
+}
+
+.badge-success {
+  @apply bg-green-100 text-green-800;
+}
+
+/* Dark mode badge success */
+.dark .badge-success {
+  @apply bg-tokyo-night-green/20 text-tokyo-night-green;
+}
+
+.badge-warning {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+/* Dark mode badge warning */
+.dark .badge-warning {
+  @apply bg-tokyo-night-yellow/20 text-tokyo-night-yellow;
+}
+
+.badge-error {
+  @apply bg-red-100 text-red-800;
+}
+
+/* Dark mode badge error */
+.dark .badge-error {
+  @apply bg-tokyo-night-red/20 text-tokyo-night-red;
+}
+
+/* Improved accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card-hover:hover {
+    border: 2px solid #000;
+  }
+  
+  .btn-primary {
+    @apply border-2 border-black;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-fade-in-up,
+  .animate-gradient-x,
+  .animate-gradient-x-slow,
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast,
+  .animate-pulse {
+    animation: none;
+  }
+}
